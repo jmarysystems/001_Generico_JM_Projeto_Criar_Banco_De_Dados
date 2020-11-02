@@ -6,6 +6,7 @@ package criar_banco_de_dados_menu_e_submenu;
 
 import br.com.jmary.home.Home;
 import br.com.jmary.utilidades.JOPM;
+import conexao_com_banco_de_dados_menu_e_submenu.Conexao_Com_Banco_De_Dados_Submenu_01;
 import home_controle_menus_norte.imagens.Imagens_Menu_Norte;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -77,6 +78,8 @@ public class Criar_Banco_De_Dados_Menu_01 extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -137,6 +140,24 @@ public class Criar_Banco_De_Dados_Menu_01 extends javax.swing.JPanel {
         });
         menu_maimais.add(jMenuItem2);
         menu_maimais.add(jSeparator7);
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_controle_menus_norte/imagens/conexao.png"))); // NOI18N
+        jMenuItem3.setText("Conexão Banco de Dados");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenuItem3MouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem3MousePressed(evt);
+            }
+        });
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menu_maimais.add(jMenuItem3);
+        menu_maimais.add(jSeparator8);
 
         Barra_Menu.add(menu_maimais);
 
@@ -235,13 +256,33 @@ public class Criar_Banco_De_Dados_Menu_01 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3MouseEntered
+
+    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
+        Home.tocarSon.tocar( 51 );
+        try{
+
+            Home.adicionar_SubMenu(new Conexao_Com_Banco_De_Dados_Submenu_01( Home ) );
+
+        } catch( Exception e ){ e.printStackTrace(); JOPM JOptionPaneMod = new JOPM( 2, "adicionarSubmenu( Component c ), \n"
+            + e.getMessage() + "\n", "Classe: " + "Controle_de_Alterar_Menu_Norte" ); }
+    }//GEN-LAST:event_jMenuItem3MousePressed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenuBar Barra_Menu;
     private javax.swing.JInternalFrame Fonema_E_Letra_Frame_Interno;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JMenu menu_ajuda;
     private javax.swing.JMenu menu_maimais;
     private javax.swing.JMenu menu_seta;

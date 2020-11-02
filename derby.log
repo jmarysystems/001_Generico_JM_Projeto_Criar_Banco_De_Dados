@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Sun Apr 08 14:35:17 BRT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-0162-a653-8e79-00000027caa0 
-on database directory C:\000000\JM\00_Generico\001_Generico_JM_Projeto_Criar_Banco_De_Dados\Generico_JM_001_Criar_Banco_De_Dados\Banco_De_Dados  with class loader sun.misc.Launcher$AppClassLoader@d93b30 
-Loaded from file:/C:/000000/JM/00_Generico/001_Generico_JM_Projeto_Criar_Banco_De_Dados/Generico_JM_001_Criar_Banco_De_Dados/dist/run397991187/lib/derby.jar
+Sun Oct 25 01:41:20 GFT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-0175-5e0f-91ce-0000008ee018 
+on database directory C:\00\001_Generico_JM_Projeto_Criar_Banco_De_Dados\Generico_JM_001_Criar_Banco_De_Dados\Banco_De_Dados_00  with class loader sun.misc.Launcher$AppClassLoader@a298b7 
+Loaded from file:/C:/00/001_Generico_JM_Projeto_Criar_Banco_De_Dados/Generico_JM_001_Criar_Banco_De_Dados/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_131-b11
-user.dir=C:\000000\JM\00_Generico\001_Generico_JM_Projeto_Criar_Banco_De_Dados\Generico_JM_001_Criar_Banco_De_Dados
+java.runtime.version=1.8.0_251-b08
+user.dir=C:\00\001_Generico_JM_Projeto_Criar_Banco_De_Dados\Generico_JM_001_Criar_Banco_De_Dados
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
