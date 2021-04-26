@@ -5,9 +5,13 @@
  */
 package criar_banco_de_dados;
 
+import Conexao_Com_Banco_De_Dados.Conexao_Com_Banco_De_Dados_Generico;
 import br.com.jmary.home.Home;
 import br.com.jmary.home.imagens.Imagens_Internas;
+import br.com.jmary.home.jpa.DB;
+import br.com.jmary.utilidades.Exportando;
 import br.com.jmary.utilidades.JOPM;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author admin
  */
-public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JPanel {
+public class Criar_Banco_De_Dados_01_Generico_Mysql extends javax.swing.JPanel {
 
     Home Home;
     
@@ -34,12 +38,13 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
      * Creates new form Visualizador_Interno2
      * @param Home2
      */
-    public Criar_Banco_De_Dados_00_Generico_Derby_Alone( Home Home2) {
+    public Criar_Banco_De_Dados_01_Generico_Mysql( Home Home2) {
         initComponents();
         
         Home = Home2;
         
-        jp_Status_Criacao.setVisible(false);
+        //jp_Status_Criacao.setVisible(false);
+        
         //Properties_CriadoX = Properties_Criado;
         //Home.ControleTabs.removerTabSemControleSelecionadoPeloNome(jTabbedPane1,Properties_Criado);
     }
@@ -48,6 +53,24 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
                 "MATERIAL", "EAN", "DESCRICAO DO MATERIAL", "UBM", "Q.EMB", "GRUPO", "MRP", "EST. CD184", "EST. LOJA", "SUGESTÃO-JM", "PED. ATIVO", "REMESSA", "SAIU CD",  "ENT. LOJA", "CD ONTEM", "CLASSE", "SETOR", "EST. TIPO", "COD. FORNEC.", "NOME FORNEC.", "RA GEROU", "SEÇÃO", "EST. MÍNIMO", "DISPONIBILIDADE", "VENDA ULT. SEM", "VENDA 04 SEM", "VENDA 12 SEM", "  DDE  ", "DIAS SEM VENDAS"           
             } );
 
+    private void home_setar_Banco_de_Dados_properties() {                                         
+////////////////////////////////////////////////////////////////////////////////  
+        try{                
+            String nomeArquivoPropertiesASerCriado = "db_conf_derby";
+            
+            Properties props = new Properties();                        
+            FileInputStream in = new FileInputStream( nomeArquivoPropertiesASerCriado + ".properties" );
+            props.loadFromXML(in);
+            in.close();  
+            
+            Home.setar_Banco_de_Dados(props);
+            
+        }catch( Exception e ){
+            e.printStackTrace();
+         }
+//////////////////////////////////////////////////////////////////////////////// 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,7 +91,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         JPOpcao_30 = new javax.swing.JPanel();
         jTextArea16 = new javax.swing.JTextArea();
         JPOpcao_31 = new javax.swing.JPanel();
-        taStatus = new javax.swing.JTextArea();
+        taNomeBanco = new javax.swing.JTextArea();
         jPanel22 = new javax.swing.JPanel();
         btCriar = new javax.swing.JButton();
         btCriar1 = new javax.swing.JButton();
@@ -82,27 +105,32 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         jTextArea19 = new javax.swing.JTextArea();
         JPOpcao_36 = new javax.swing.JPanel();
         taSenha = new javax.swing.JTextArea();
-        jp_Status_Criacao = new javax.swing.JPanel();
+        btExcluirBanco = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         JPOpcao_6 = new javax.swing.JPanel();
         ta_status_criacao = new javax.swing.JTextArea();
-        Requerer_Autenticacao = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jPanel13 = new javax.swing.JPanel();
-        JPOpcao_5 = new javax.swing.JPanel();
-        ta_requerer_autenticacao = new javax.swing.JTextArea();
-        Criar_Schema = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jPanel14 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         JPOpcao_7 = new javax.swing.JPanel();
-        ta_schema = new javax.swing.JTextArea();
+        ta_status_criacao1 = new javax.swing.JTextArea();
         Teste = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel15 = new javax.swing.JPanel();
         JPOpcao_8 = new javax.swing.JPanel();
-        ta_Teste = new javax.swing.JTextArea();
+        ta_Criar_Tabela_Teste = new javax.swing.JTextArea();
+        USUARIO_IMAGENS1 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jTabbedPane26 = new javax.swing.JTabbedPane();
+        jPanel36 = new javax.swing.JPanel();
+        JPOpcao_41 = new javax.swing.JPanel();
+        ta_Povoar_Tabela_Teste = new javax.swing.JTextArea();
+        btPovoarTabela2 = new javax.swing.JButton();
+        btCriarTabela0001 = new javax.swing.JButton();
+        btExcluirTabela = new javax.swing.JButton();
+        lb_tabela_TESTE = new javax.swing.JLabel();
         USUARIO_SISTEMA = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTabbedPane13 = new javax.swing.JTabbedPane();
@@ -239,7 +267,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         Criar_Banco.setPreferredSize(new java.awt.Dimension(585, 458));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 34)); // NOI18N
-        jLabel3.setText("Criar Banco De Dados Derby Alone");
+        jLabel3.setText("Criar Banco De Dados Mysql Network");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens_Criar_Banco_De_Dados/img_dbs.jpg"))); // NOI18N
 
@@ -304,20 +332,20 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             }
         });
 
-        taStatus.setColumns(20);
-        taStatus.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        taStatus.setRows(5);
-        taStatus.setText("Banco_De_Dados_00");
-        taStatus.setBorder(null);
-        taStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+        taNomeBanco.setColumns(20);
+        taNomeBanco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        taNomeBanco.setRows(5);
+        taNomeBanco.setText("Banco_De_Dados_00");
+        taNomeBanco.setBorder(null);
+        taNomeBanco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                taStatusMouseEntered(evt);
+                taNomeBancoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                taStatusMouseExited(evt);
+                taNomeBancoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                taStatusMousePressed(evt);
+                taNomeBancoMousePressed(evt);
             }
         });
 
@@ -327,12 +355,12 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             JPOpcao_31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPOpcao_31Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(taStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addComponent(taNomeBanco, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                 .addContainerGap())
         );
         JPOpcao_31Layout.setVerticalGroup(
             JPOpcao_31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(taStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(taNomeBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
@@ -611,6 +639,16 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             .addComponent(JPOpcao_36, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
         );
 
+        btExcluirBanco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btExcluirBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_controle_menus_norte/imagens/lixo2.png"))); // NOI18N
+        btExcluirBanco.setText("Excluir Banco");
+        btExcluirBanco.setPreferredSize(new java.awt.Dimension(91, 27));
+        btExcluirBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirBancoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpStatusLayout = new javax.swing.GroupLayout(jpStatus);
         jpStatus.setLayout(jpStatusLayout);
         jpStatusLayout.setHorizontalGroup(
@@ -618,14 +656,20 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             .addGroup(jpStatusLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpStatusLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btExcluirBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpStatusLayout.createSequentialGroup()
                         .addGroup(jpStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 8, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jpStatusLayout.createSequentialGroup()
+                                .addGroup(jpStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 8, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jpStatusLayout.setVerticalGroup(
             jpStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -638,8 +682,26 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btExcluirBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_controle_menus_norte/imagens/ip_conexao.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_controle_menus_norte/imagens/sql.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
 
         JPOpcao_6.setBackground(new java.awt.Color(255, 255, 255));
         JPOpcao_6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 51)));
@@ -658,7 +720,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         ta_status_criacao.setColumns(20);
         ta_status_criacao.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         ta_status_criacao.setRows(5);
-        ta_status_criacao.setText("\n\n");
+        ta_status_criacao.setText("Para criar o banco:\n1 - criar a conexao sem o nome do banco \n\nPara criar as tabelas:\n2 - criar a conexao com o nome do banco ");
         ta_status_criacao.setBorder(null);
         ta_status_criacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -678,178 +740,39 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             JPOpcao_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPOpcao_6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ta_status_criacao, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addComponent(ta_status_criacao, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
                 .addContainerGap())
         );
         JPOpcao_6Layout.setVerticalGroup(
             JPOpcao_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPOpcao_6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ta_status_criacao, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                .addComponent(ta_status_criacao, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jp_Status_CriacaoLayout = new javax.swing.GroupLayout(jp_Status_Criacao);
-        jp_Status_Criacao.setLayout(jp_Status_CriacaoLayout);
-        jp_Status_CriacaoLayout.setHorizontalGroup(
-            jp_Status_CriacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_Status_CriacaoLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JPOpcao_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JPOpcao_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jp_Status_CriacaoLayout.setVerticalGroup(
-            jp_Status_CriacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_Status_CriacaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JPOpcao_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout Criar_BancoLayout = new javax.swing.GroupLayout(Criar_Banco);
-        Criar_Banco.setLayout(Criar_BancoLayout);
-        Criar_BancoLayout.setHorizontalGroup(
-            Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Criar_BancoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE)
-                    .addGroup(Criar_BancoLayout.createSequentialGroup()
-                        .addGroup(Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jp_Status_Criacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Criar_BancoLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jpStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        Criar_BancoLayout.setVerticalGroup(
-            Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Criar_BancoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jp_Status_Criacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
-        );
-
-        jTabbedPane8.addTab("Criar", Criar_Banco);
-
-        javax.swing.GroupLayout jpCriar_BancoLayout = new javax.swing.GroupLayout(jpCriar_Banco);
-        jpCriar_Banco.setLayout(jpCriar_BancoLayout);
-        jpCriar_BancoLayout.setHorizontalGroup(
-            jpCriar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
-        );
-        jpCriar_BancoLayout.setVerticalGroup(
-            jpCriar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Criar Banco", jpCriar_Banco);
-
-        Requerer_Autenticacao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Requerer_Autenticacao.setPreferredSize(new java.awt.Dimension(585, 458));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
-        jLabel5.setText("Requerer Autenticação");
-
-        JPOpcao_5.setBackground(new java.awt.Color(255, 255, 255));
-        JPOpcao_5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 51)));
-        JPOpcao_5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                JPOpcao_5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                JPOpcao_5MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                JPOpcao_5MousePressed(evt);
-            }
-        });
-
-        ta_requerer_autenticacao.setColumns(20);
-        ta_requerer_autenticacao.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        ta_requerer_autenticacao.setRows(5);
-        ta_requerer_autenticacao.setText("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.sqlAuthorization', 'true')");
-        ta_requerer_autenticacao.setBorder(null);
-        ta_requerer_autenticacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ta_requerer_autenticacaoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ta_requerer_autenticacaoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ta_requerer_autenticacaoMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout JPOpcao_5Layout = new javax.swing.GroupLayout(JPOpcao_5);
-        JPOpcao_5.setLayout(JPOpcao_5Layout);
-        JPOpcao_5Layout.setHorizontalGroup(
-            JPOpcao_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPOpcao_5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ta_requerer_autenticacao)
-                .addContainerGap())
-        );
-        JPOpcao_5Layout.setVerticalGroup(
-            JPOpcao_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPOpcao_5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ta_requerer_autenticacao)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(JPOpcao_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(JPOpcao_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jTabbedPane3.addTab("Criar", jPanel13);
-
-        javax.swing.GroupLayout Requerer_AutenticacaoLayout = new javax.swing.GroupLayout(Requerer_Autenticacao);
-        Requerer_Autenticacao.setLayout(Requerer_AutenticacaoLayout);
-        Requerer_AutenticacaoLayout.setHorizontalGroup(
-            Requerer_AutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Requerer_AutenticacaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Requerer_AutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Requerer_AutenticacaoLayout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1103, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jTabbedPane3)))
-        );
-        Requerer_AutenticacaoLayout.setVerticalGroup(
-            Requerer_AutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Requerer_AutenticacaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Requerer_Autenticação", Requerer_Autenticacao);
-
-        Criar_Schema.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Criar_Schema.setPreferredSize(new java.awt.Dimension(585, 458));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
-        jLabel6.setText("Criar Schema");
+        jTabbedPane2.addTab("SQL", jPanel1);
 
         JPOpcao_7.setBackground(new java.awt.Color(255, 255, 255));
         JPOpcao_7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 51)));
@@ -865,20 +788,20 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             }
         });
 
-        ta_schema.setColumns(20);
-        ta_schema.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        ta_schema.setRows(5);
-        ta_schema.setText("CREATE SCHEMA JM AUTHORIZATION cleilson");
-        ta_schema.setBorder(null);
-        ta_schema.addMouseListener(new java.awt.event.MouseAdapter() {
+        ta_status_criacao1.setColumns(20);
+        ta_status_criacao1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        ta_status_criacao1.setRows(5);
+        ta_status_criacao1.setText("SHOW DATABASES;\nCREATE DATABASE nome-do-banco;\nSHOW tables;\nDESCRIBE table;\nSELECT * FROM table;\n\n\n");
+        ta_status_criacao1.setBorder(null);
+        ta_status_criacao1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ta_schemaMouseEntered(evt);
+                ta_status_criacao1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ta_schemaMouseExited(evt);
+                ta_status_criacao1MouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ta_schemaMousePressed(evt);
+                ta_status_criacao1MousePressed(evt);
             }
         });
 
@@ -888,62 +811,90 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             JPOpcao_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPOpcao_7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ta_schema)
+                .addComponent(ta_status_criacao1, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
                 .addContainerGap())
         );
         JPOpcao_7Layout.setVerticalGroup(
             JPOpcao_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPOpcao_7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ta_schema)
+                .addComponent(ta_status_criacao1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(JPOpcao_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(JPOpcao_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Criar", jPanel14);
+        jTabbedPane2.addTab("comandos", jPanel2);
 
-        javax.swing.GroupLayout Criar_SchemaLayout = new javax.swing.GroupLayout(Criar_Schema);
-        Criar_Schema.setLayout(Criar_SchemaLayout);
-        Criar_SchemaLayout.setHorizontalGroup(
-            Criar_SchemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Criar_SchemaLayout.createSequentialGroup()
+        javax.swing.GroupLayout Criar_BancoLayout = new javax.swing.GroupLayout(Criar_Banco);
+        Criar_Banco.setLayout(Criar_BancoLayout);
+        Criar_BancoLayout.setHorizontalGroup(
+            Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Criar_BancoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Criar_SchemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Criar_SchemaLayout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1103, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jTabbedPane4)))
+                .addGroup(Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(Criar_BancoLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jpStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane2))
+                .addContainerGap())
         );
-        Criar_SchemaLayout.setVerticalGroup(
-            Criar_SchemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Criar_SchemaLayout.createSequentialGroup()
+        Criar_BancoLayout.setVerticalGroup(
+            Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Criar_BancoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE))
+                .addGroup(Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Criar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jpStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Criar Schema", Criar_Schema);
+        jTabbedPane8.addTab("Criar", Criar_Banco);
+
+        javax.swing.GroupLayout jpCriar_BancoLayout = new javax.swing.GroupLayout(jpCriar_Banco);
+        jpCriar_Banco.setLayout(jpCriar_BancoLayout);
+        jpCriar_BancoLayout.setHorizontalGroup(
+            jpCriar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
+        );
+        jpCriar_BancoLayout.setVerticalGroup(
+            jpCriar_BancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Criar Banco", jpCriar_Banco);
 
         Teste.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Teste.setPreferredSize(new java.awt.Dimension(585, 458));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
-        jLabel7.setText("Tabela Teste");
+        jLabel7.setText("Tabela:");
 
         JPOpcao_8.setBackground(new java.awt.Color(255, 255, 255));
         JPOpcao_8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 51)));
@@ -959,20 +910,20 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             }
         });
 
-        ta_Teste.setColumns(20);
-        ta_Teste.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ta_Teste.setRows(5);
-        ta_Teste.setText("CREATE TABLE JM.TESTE (\n\n    ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), \n\n    TESTE1 VARCHAR(300), \n    TESTE2 VARCHAR(300),\n    TESTE3 VARCHAR(300),\n    TESTE4 VARCHAR(300)        \n\n)          \n");
-        ta_Teste.setBorder(null);
-        ta_Teste.addMouseListener(new java.awt.event.MouseAdapter() {
+        ta_Criar_Tabela_Teste.setColumns(20);
+        ta_Criar_Tabela_Teste.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ta_Criar_Tabela_Teste.setRows(5);
+        ta_Criar_Tabela_Teste.setText("CREATE TABLE IF NOT EXISTS TESTE (\n\n    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, \n\n    TESTE1 VARCHAR(300), \n    TESTE2 VARCHAR(300),\n    TESTE3 VARCHAR(300),\n    TESTE4 VARCHAR(300)        \n\n)          \n");
+        ta_Criar_Tabela_Teste.setBorder(null);
+        ta_Criar_Tabela_Teste.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ta_TesteMouseEntered(evt);
+                ta_Criar_Tabela_TesteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ta_TesteMouseExited(evt);
+                ta_Criar_Tabela_TesteMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ta_TesteMousePressed(evt);
+                ta_Criar_Tabela_TesteMousePressed(evt);
             }
         });
 
@@ -982,14 +933,14 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             JPOpcao_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPOpcao_8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ta_Teste)
+                .addComponent(ta_Criar_Tabela_Teste)
                 .addContainerGap())
         );
         JPOpcao_8Layout.setVerticalGroup(
             JPOpcao_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPOpcao_8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ta_Teste)
+                .addComponent(ta_Criar_Tabela_Teste)
                 .addContainerGap())
         );
 
@@ -999,16 +950,148 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addComponent(JPOpcao_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 771, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addComponent(JPOpcao_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Criar", jPanel15);
+        jTabbedPane5.addTab("Criar TESTE", jPanel15);
+
+        USUARIO_IMAGENS1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        USUARIO_IMAGENS1.setPreferredSize(new java.awt.Dimension(585, 458));
+
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
+        jLabel29.setText("Povoar Tabela: TESTE");
+
+        JPOpcao_41.setBackground(new java.awt.Color(255, 255, 255));
+        JPOpcao_41.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 51)));
+        JPOpcao_41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JPOpcao_41MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JPOpcao_41MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JPOpcao_41MousePressed(evt);
+            }
+        });
+
+        ta_Povoar_Tabela_Teste.setColumns(20);
+        ta_Povoar_Tabela_Teste.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ta_Povoar_Tabela_Teste.setRows(5);
+        ta_Povoar_Tabela_Teste.setText("INSERT INTO TESTE\n\n(\n    TESTE1, \n    TESTE2, \n    TESTE3, \n    TESTE4\n)\n\nVALUES (  \"valor 1\", \"valor 2\", \"valor 3\", \"valor 4\"  )");
+        ta_Povoar_Tabela_Teste.setBorder(null);
+        ta_Povoar_Tabela_Teste.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ta_Povoar_Tabela_TesteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ta_Povoar_Tabela_TesteMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ta_Povoar_Tabela_TesteMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JPOpcao_41Layout = new javax.swing.GroupLayout(JPOpcao_41);
+        JPOpcao_41.setLayout(JPOpcao_41Layout);
+        JPOpcao_41Layout.setHorizontalGroup(
+            JPOpcao_41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPOpcao_41Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ta_Povoar_Tabela_Teste, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE))
+        );
+        JPOpcao_41Layout.setVerticalGroup(
+            JPOpcao_41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPOpcao_41Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ta_Povoar_Tabela_Teste)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addComponent(JPOpcao_41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addComponent(JPOpcao_41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 412, Short.MAX_VALUE))
+        );
+
+        jTabbedPane26.addTab("Modelo_Físico", jPanel36);
+
+        btPovoarTabela2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btPovoarTabela2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens_Criar_Banco_De_Dados/conectar.gif"))); // NOI18N
+        btPovoarTabela2.setText("Povoar Tabela");
+        btPovoarTabela2.setPreferredSize(new java.awt.Dimension(91, 27));
+        btPovoarTabela2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPovoarTabela2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout USUARIO_IMAGENS1Layout = new javax.swing.GroupLayout(USUARIO_IMAGENS1);
+        USUARIO_IMAGENS1.setLayout(USUARIO_IMAGENS1Layout);
+        USUARIO_IMAGENS1Layout.setHorizontalGroup(
+            USUARIO_IMAGENS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(USUARIO_IMAGENS1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(USUARIO_IMAGENS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(USUARIO_IMAGENS1Layout.createSequentialGroup()
+                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btPovoarTabela2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane26, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        USUARIO_IMAGENS1Layout.setVerticalGroup(
+            USUARIO_IMAGENS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(USUARIO_IMAGENS1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(USUARIO_IMAGENS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btPovoarTabela2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane26)
+                .addGap(88, 88, 88))
+        );
+
+        jTabbedPane5.addTab("Povoar TESTE", USUARIO_IMAGENS1);
+
+        btCriarTabela0001.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btCriarTabela0001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens_Criar_Banco_De_Dados/conectar.gif"))); // NOI18N
+        btCriarTabela0001.setText("Criar Tabela");
+        btCriarTabela0001.setPreferredSize(new java.awt.Dimension(91, 27));
+        btCriarTabela0001.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCriarTabela0001ActionPerformed(evt);
+            }
+        });
+
+        btExcluirTabela.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btExcluirTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home_controle_menus_norte/imagens/lixo2.png"))); // NOI18N
+        btExcluirTabela.setText("Excluir Tabela");
+        btExcluirTabela.setPreferredSize(new java.awt.Dimension(91, 27));
+        btExcluirTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirTabelaActionPerformed(evt);
+            }
+        });
+
+        lb_tabela_TESTE.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
+        lb_tabela_TESTE.setText("TESTE");
 
         javax.swing.GroupLayout TesteLayout = new javax.swing.GroupLayout(Teste);
         Teste.setLayout(TesteLayout);
@@ -1017,18 +1100,29 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             .addGroup(TesteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(TesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane5)
                     .addGroup(TesteLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 1103, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jTabbedPane5)))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_tabela_TESTE, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCriarTabela0001, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btExcluirTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         TesteLayout.setVerticalGroup(
             TesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TesteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addGroup(TesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(TesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_tabela_TESTE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btCriarTabela0001, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btExcluirTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE))
+                .addComponent(jTabbedPane5))
         );
 
         jTabbedPane1.addTab("Teste", Teste);
@@ -1098,7 +1192,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addComponent(JPOpcao_16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 316, Short.MAX_VALUE))
+                .addGap(0, 357, Short.MAX_VALUE))
         );
 
         jTabbedPane13.addTab("Modelo_Físico", jPanel26);
@@ -1162,7 +1256,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addComponent(JPOpcao_17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 391, Short.MAX_VALUE))
+                .addGap(0, 432, Short.MAX_VALUE))
         );
 
         jTabbedPane13.addTab("Povoar Usuário do Sistema", jPanel27);
@@ -1232,7 +1326,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addComponent(JPOpcao_18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 419, Short.MAX_VALUE))
+                .addGap(0, 455, Short.MAX_VALUE))
         );
 
         jTabbedPane14.addTab("Modelo_Físico", jPanel28);
@@ -1346,7 +1440,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addComponent(JPOpcao_19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 331, Short.MAX_VALUE))
+                .addGap(0, 372, Short.MAX_VALUE))
         );
 
         jTabbedPane15.addTab("Modelo_Físico", jPanel29);
@@ -1410,7 +1504,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addComponent(JPOpcao_20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 406, Short.MAX_VALUE))
+                .addGap(0, 447, Short.MAX_VALUE))
         );
 
         jTabbedPane15.addTab("Povoar Estabelecimento", jPanel30);
@@ -1480,7 +1574,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addComponent(JPOpcao_21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 419, Short.MAX_VALUE))
+                .addGap(0, 455, Short.MAX_VALUE))
         );
 
         jTabbedPane16.addTab("Modelo_Físico", jPanel31);
@@ -1653,7 +1747,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addComponent(JPOpcao_23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 346, Short.MAX_VALUE))
+                .addGap(0, 387, Short.MAX_VALUE))
         );
 
         jTabbedPane17.addTab("Povoar CONTROLE_DE_ACESSO", jPanel33);
@@ -1804,7 +1898,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel59Layout.createSequentialGroup()
                 .addComponent(JPOpcao_59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 466, Short.MAX_VALUE))
+                .addGap(0, 507, Short.MAX_VALUE))
         );
 
         jTabbedPane33.addTab("Povoar ÁREA", jPanel59);
@@ -1955,7 +2049,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel61Layout.createSequentialGroup()
                 .addComponent(JPOpcao_61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 436, Short.MAX_VALUE))
+                .addGap(0, 477, Short.MAX_VALUE))
         );
 
         jTabbedPane34.addTab("Povoar CATEGORIA", jPanel61);
@@ -2106,7 +2200,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel63Layout.createSequentialGroup()
                 .addComponent(JPOpcao_63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 406, Short.MAX_VALUE))
+                .addGap(0, 447, Short.MAX_VALUE))
         );
 
         jTabbedPane35.addTab("Povoar SUBCATEGORIA", jPanel63);
@@ -2257,7 +2351,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel65Layout.createSequentialGroup()
                 .addComponent(JPOpcao_65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 376, Short.MAX_VALUE))
+                .addGap(0, 417, Short.MAX_VALUE))
         );
 
         jTabbedPane36.addTab("Povoar FAMÍLIA", jPanel65);
@@ -2349,7 +2443,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             PRODUTOS_MODELO_FISICO1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PRODUTOS_MODELO_FISICO1Layout.createSequentialGroup()
                 .addComponent(JPOpcao_38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 397, Short.MAX_VALUE))
+                .addGap(0, 447, Short.MAX_VALUE))
         );
 
         jTabbedPane24.addTab("Modelo_Físico", PRODUTOS_MODELO_FISICO1);
@@ -2419,7 +2513,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel42Layout.createSequentialGroup()
                 .addComponent(JPOpcao_39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 345, Short.MAX_VALUE))
+                .addGap(0, 395, Short.MAX_VALUE))
         );
 
         jTabbedPane25.addTab("Modelo_Físico", jPanel42);
@@ -2533,7 +2627,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             PRODUTOS_MODELO_FISICOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PRODUTOS_MODELO_FISICOLayout.createSequentialGroup()
                 .addComponent(JPOpcao_26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 57, Short.MAX_VALUE))
         );
 
         jTabbedPane19.addTab("Modelo_Físico", PRODUTOS_MODELO_FISICO);
@@ -2603,7 +2697,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addComponent(JPOpcao_28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 329, Short.MAX_VALUE))
+                .addGap(0, 365, Short.MAX_VALUE))
         );
 
         jTabbedPane20.addTab("Modelo_Físico", jPanel38);
@@ -2695,7 +2789,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addComponent(JPOpcao_37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 359, Short.MAX_VALUE))
+                .addGap(0, 395, Short.MAX_VALUE))
         );
 
         jTabbedPane23.addTab("Modelo_Físico", jPanel41);
@@ -2868,7 +2962,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addComponent(JPOpcao_25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 250, Short.MAX_VALUE))
+                .addGap(0, 291, Short.MAX_VALUE))
         );
 
         jTabbedPane18.addTab("Povoar EVENTOS", jPanel35);
@@ -2960,7 +3054,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addComponent(JPOpcao_27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 556, Short.MAX_VALUE))
+                .addGap(0, 597, Short.MAX_VALUE))
         );
 
         jTabbedPane21.addTab("Modelo_Físico", jPanel37);
@@ -3024,7 +3118,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addComponent(JPOpcao_29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 571, Short.MAX_VALUE))
+                .addGap(0, 612, Short.MAX_VALUE))
         );
 
         jTabbedPane21.addTab("Povoar Usuário Turbo", jPanel39);
@@ -3094,7 +3188,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
                 .addComponent(JPOpcao_32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 389, Short.MAX_VALUE))
+                .addGap(0, 425, Short.MAX_VALUE))
         );
 
         jTabbedPane22.addTab("Modelo_Físico", jPanel40);
@@ -3165,11 +3259,11 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
                 btCriar.setEnabled(false);
                 btCriar1.setEnabled(false);
                 
-                String retorno = criar_Banco_De_Dados_Derby();
+                String retorno = criar_Banco_De_Dados_Mysql();
                 
                 Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
                 JOPM JOptionPaneMod = new JOPM( 1, "Criação de Baco de Dados\n"
-                        + "\nNome Banco de Dados: "+taStatus.getText().trim() 
+                        + "\nNome Banco de Dados: "+taNomeBanco.getText().trim() 
                         + "\n"  
                         + retorno
                         ,"Baco de Dados", 
@@ -3181,17 +3275,17 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         } catch( Exception e ){ e.printStackTrace(); } } }.start();  
     }//GEN-LAST:event_btCriarActionPerformed
         
-    private void taStatusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taStatusMouseEntered
+    private void taNomeBancoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taNomeBancoMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_taStatusMouseEntered
+    }//GEN-LAST:event_taNomeBancoMouseEntered
 
-    private void taStatusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taStatusMouseExited
+    private void taNomeBancoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taNomeBancoMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_taStatusMouseExited
+    }//GEN-LAST:event_taNomeBancoMouseExited
 
-    private void taStatusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taStatusMousePressed
+    private void taNomeBancoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taNomeBancoMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_taStatusMousePressed
+    }//GEN-LAST:event_taNomeBancoMousePressed
 
     private void jTextArea16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea16MouseEntered
         // TODO add your handling code here:
@@ -3242,7 +3336,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
                 
                 Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
                 JOPM JOptionPaneMod = new JOPM( 1, "Criação de Tabelas do Baco de Dados\n"
-                        + "\nNome Banco de Dados: "+taStatus.getText().trim() 
+                        + "\nNome Banco de Dados: "+taNomeBanco.getText().trim() 
                         + "\n"  
                         + retorno
                         ,"Baco de Dados", 
@@ -3350,30 +3444,6 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         // TODO add your handling code here:
     }//GEN-LAST:event_JPOpcao_36MousePressed
 
-    private void ta_requerer_autenticacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_requerer_autenticacaoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ta_requerer_autenticacaoMouseEntered
-
-    private void ta_requerer_autenticacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_requerer_autenticacaoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ta_requerer_autenticacaoMouseExited
-
-    private void ta_requerer_autenticacaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_requerer_autenticacaoMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ta_requerer_autenticacaoMousePressed
-
-    private void JPOpcao_5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_5MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JPOpcao_5MouseEntered
-
-    private void JPOpcao_5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_5MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JPOpcao_5MouseExited
-
-    private void JPOpcao_5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_5MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JPOpcao_5MousePressed
-
     private void ta_status_criacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_status_criacaoMouseEntered
      
     }//GEN-LAST:event_ta_status_criacaoMouseEntered
@@ -3398,17 +3468,17 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
       
     }//GEN-LAST:event_JPOpcao_6MousePressed
 
-    private void ta_TesteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_TesteMouseEntered
+    private void ta_Criar_Tabela_TesteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_Criar_Tabela_TesteMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_ta_TesteMouseEntered
+    }//GEN-LAST:event_ta_Criar_Tabela_TesteMouseEntered
 
-    private void ta_TesteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_TesteMouseExited
+    private void ta_Criar_Tabela_TesteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_Criar_Tabela_TesteMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_ta_TesteMouseExited
+    }//GEN-LAST:event_ta_Criar_Tabela_TesteMouseExited
 
-    private void ta_TesteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_TesteMousePressed
+    private void ta_Criar_Tabela_TesteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_Criar_Tabela_TesteMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ta_TesteMousePressed
+    }//GEN-LAST:event_ta_Criar_Tabela_TesteMousePressed
 
     private void JPOpcao_8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_8MouseEntered
         // TODO add your handling code here:
@@ -3782,30 +3852,6 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         // TODO add your handling code here:
     }//GEN-LAST:event_JPOpcao_32MousePressed
 
-    private void ta_schemaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_schemaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ta_schemaMouseEntered
-
-    private void ta_schemaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_schemaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ta_schemaMouseExited
-
-    private void ta_schemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_schemaMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ta_schemaMousePressed
-
-    private void JPOpcao_7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_7MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JPOpcao_7MouseEntered
-
-    private void JPOpcao_7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_7MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JPOpcao_7MouseExited
-
-    private void JPOpcao_7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_7MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JPOpcao_7MousePressed
-
     private void ta_AREAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_AREAMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_ta_AREAMouseEntered
@@ -4070,13 +4116,288 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
         // TODO add your handling code here:
     }//GEN-LAST:event_JPOpcao_39MousePressed
 
+    Exportando Exportando;
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        new Thread() {   @Override public void run() { try { 
+            Exportando = new Exportando("ABRINDO...");
+            Exportando.setVisible(true);Exportando.pbg.setMinimum(0);
+            Exportando.pbg.setMaximum( 100 );
+            Exportando.pbg.setValue( 50 );
+            
+            //Home.ControleTabs.removerTabSelecionado();
+            Home.ControleTabs.AddTabsAoHome("Conexao Com Banco De Dados", "livroTp.gif", 
+                    new Conexao_Com_Banco_De_Dados_Generico(Home) );
+
+            Exportando.fechar();
+        } catch( Exception e ){ Exportando.fechar(); e.printStackTrace(); } } }.start();
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void btCriarTabela0001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCriarTabela0001ActionPerformed
+        new Thread() {   @Override public void run() { try { Thread.sleep( 1 ); 
+        
+////////////////////////////////////////////////////////////////////////////////  
+        home_setar_Banco_de_Dados_properties();
+//////////////////////////////////////////////////////////////////////////////// 
+        
+////////////////////////////////////////////////////////////////////////////////
+        try{ 
+            if(btCriarTabela0001.isEnabled()==true){
+                
+                btCriarTabela0001.setEnabled(false);
+                                
+                ////////////////////////////////////////////////////////////////              
+                DB DB2 = new DB();
+                Connection con = null; try{ con = DB2.derby();           }catch(Exception e){}    
+                Statement s    = null; try{ s   = con.createStatement(); }catch(Exception e){} 
+                                 
+                s.execute( ta_Criar_Tabela_Teste.getText().trim() ); 
+                ////////////////////////////////////////////////////////////////
+                
+                Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+                JOPM JOptionPaneMod = new JOPM( 1, "Criação de Tabela\n"
+                        + "\nTabela criada com sucesso: " 
+                        + "\n"  
+                        + "-"
+                        ,"Banco de Dados", 
+                        new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+                btCriarTabela0001.setEnabled(true);
+            }
+        }catch( Exception e ){
+            btCriarTabela0001.setEnabled(true);
+            
+            e.printStackTrace();
+            
+            Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+            JOPM JOptionPaneMod = new JOPM( 1, "Criação de Tabela\n"
+                    + "\nTabela não criada com sucesso: " 
+                    + "\n"  
+                    + "-"
+                    ,"Banco de Dados", 
+                    new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+        }    
+////////////////////////////////////////////////////////////////////////////////            
+            
+        } catch( Exception e ){ e.printStackTrace(); } } }.start(); 
+    }//GEN-LAST:event_btCriarTabela0001ActionPerformed
+
+    private void btExcluirTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirTabelaActionPerformed
+        new Thread() {   @Override public void run() { try { Thread.sleep( 1 ); 
+        
+////////////////////////////////////////////////////////////////////////////////  
+        home_setar_Banco_de_Dados_properties();
+//////////////////////////////////////////////////////////////////////////////// 
+        
+////////////////////////////////////////////////////////////////////////////////
+        try{ 
+            if(btExcluirTabela.isEnabled()==true){
+                
+                btExcluirTabela.setEnabled(false);
+                                
+                ////////////////////////////////////////////////////////////////              
+                DB DB2 = new DB();
+                Connection con = null; try{ con = DB2.derby();           }catch(Exception e){}    
+                Statement s    = null; try{ s   = con.createStatement(); }catch(Exception e){} 
+                                 
+                String nomeTabela = null; try{ nomeTabela = lb_tabela_TESTE.getText().trim(); }catch ( Exception e ){}
+                s.execute( "DROP TABLE IF EXISTS " + nomeTabela ); 
+                ////////////////////////////////////////////////////////////////
+                
+                Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+                JOPM JOptionPaneMod = new JOPM( 1, "Excluir Tabela do Banco de Dados\n"
+                        + "\nTabela excluída com sucesso: " 
+                        + "\n"  
+                        + "-"
+                        ,"Banco de Dados", 
+                        new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+                btExcluirTabela.setEnabled(true);
+            }
+        }catch( Exception e ){
+            btExcluirTabela.setEnabled(true);
+            
+            e.printStackTrace();
+            
+            Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+            JOPM JOptionPaneMod = new JOPM( 1, "Excluir Tabela do Banco de Dados\n"
+                    + "\nTabela excluída não com sucesso: " 
+                    + "\n"  
+                    + "-"
+                    ,"Banco de Dados", 
+                    new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+        }    
+////////////////////////////////////////////////////////////////////////////////            
+            
+        } catch( Exception e ){ e.printStackTrace(); } } }.start();
+    }//GEN-LAST:event_btExcluirTabelaActionPerformed
+
+    private void btExcluirBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirBancoActionPerformed
+        new Thread() {   @Override public void run() { try { Thread.sleep( 1 ); 
+        
+////////////////////////////////////////////////////////////////////////////////  
+        home_setar_Banco_de_Dados_properties();
+//////////////////////////////////////////////////////////////////////////////// 
+        
+////////////////////////////////////////////////////////////////////////////////
+        try{ 
+            if(btExcluirBanco.isEnabled()==true){
+                
+                btExcluirBanco.setEnabled(false);
+                                
+                ////////////////////////////////////////////////////////////////              
+                DB DB2 = new DB();
+                Connection con = null; try{ con = DB2.derby();           }catch(Exception e){}    
+                Statement s    = null; try{ s   = con.createStatement(); }catch(Exception e){} 
+                                 
+                String nomeBanco = null; try{ nomeBanco = taNomeBanco.getText().trim(); }catch ( Exception e ){}
+                s.execute( "DROP DATABASE IF EXISTS " + nomeBanco ); 
+                ////////////////////////////////////////////////////////////////
+                
+                Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+                JOPM JOptionPaneMod = new JOPM( 1, "Excluir Banco de Dados\n"
+                        + "\nBanco de Dados excluído com sucesso: " 
+                        + "\n"  
+                        + "-"
+                        ,"Banco de Dados", 
+                        new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+                btExcluirBanco.setEnabled(true);
+            }
+        }catch( Exception e ){
+            btExcluirBanco.setEnabled(true);
+            
+            e.printStackTrace();
+            
+            Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+            JOPM JOptionPaneMod = new JOPM( 1, "Excluir Banco de Dados\n"
+                    + "\nBanco de Dados não excluído com sucesso: " 
+                    + "\n"  
+                    + "-"
+                    ,"Banco de Dados", 
+                    new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+        }    
+////////////////////////////////////////////////////////////////////////////////            
+            
+        } catch( Exception e ){ e.printStackTrace(); } } }.start();
+    }//GEN-LAST:event_btExcluirBancoActionPerformed
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        new Thread() {   @Override public void run() { try { 
+            Exportando = new Exportando("ABRINDO...");
+            Exportando.setVisible(true);Exportando.pbg.setMinimum(0);
+            Exportando.pbg.setMaximum( 100 );
+            Exportando.pbg.setValue( 50 );
+            
+            String query = null; try{ query = ta_status_criacao.getText().trim(); }catch ( Exception e ){}
+            
+            //Home.ControleTabs.removerTabSelecionado();
+            Home.ControleTabs.AddTabsAoHome("Consulta SQL", "livroTp.gif", 
+                    new Tabela_JM( Home, query ) );
+
+            Exportando.fechar();
+        } catch( Exception e ){ Exportando.fechar(); e.printStackTrace(); } } }.start();
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void ta_status_criacao1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_status_criacao1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ta_status_criacao1MouseEntered
+
+    private void ta_status_criacao1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_status_criacao1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ta_status_criacao1MouseExited
+
+    private void ta_status_criacao1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_status_criacao1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ta_status_criacao1MousePressed
+
+    private void JPOpcao_7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_7MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOpcao_7MouseEntered
+
+    private void JPOpcao_7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_7MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOpcao_7MouseExited
+
+    private void JPOpcao_7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_7MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOpcao_7MousePressed
+
+    private void ta_Povoar_Tabela_TesteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_Povoar_Tabela_TesteMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ta_Povoar_Tabela_TesteMouseEntered
+
+    private void ta_Povoar_Tabela_TesteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_Povoar_Tabela_TesteMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ta_Povoar_Tabela_TesteMouseExited
+
+    private void ta_Povoar_Tabela_TesteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta_Povoar_Tabela_TesteMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ta_Povoar_Tabela_TesteMousePressed
+
+    private void JPOpcao_41MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_41MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOpcao_41MouseEntered
+
+    private void JPOpcao_41MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_41MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOpcao_41MouseExited
+
+    private void JPOpcao_41MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPOpcao_41MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOpcao_41MousePressed
+
+    private void btPovoarTabela2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPovoarTabela2ActionPerformed
+        new Thread() {   @Override public void run() { try { Thread.sleep( 1 ); 
+        
+////////////////////////////////////////////////////////////////////////////////  
+        home_setar_Banco_de_Dados_properties();
+//////////////////////////////////////////////////////////////////////////////// 
+        
+////////////////////////////////////////////////////////////////////////////////
+        try{ 
+            if(btPovoarTabela2.isEnabled()==true){
+                
+                btPovoarTabela2.setEnabled(false);
+                                
+                ////////////////////////////////////////////////////////////////              
+                DB DB2 = new DB();
+                Connection con = null; try{ con = DB2.derby();           }catch(Exception e){}    
+                Statement s    = null; try{ s   = con.createStatement(); }catch(Exception e){} 
+                                 
+                s.execute( ta_Povoar_Tabela_Teste.getText().trim() ); 
+                ////////////////////////////////////////////////////////////////
+                
+                Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+                JOPM JOptionPaneMod = new JOPM( 1, "Povoar Tabela\n"
+                        + "\nTabela povoada com sucesso: " 
+                        + "\n"  
+                        + "-"
+                        ,"Banco de Dados", 
+                        new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+                btPovoarTabela2.setEnabled(true);
+            }
+        }catch( Exception e ){
+            btPovoarTabela2.setEnabled(true);
+            
+            e.printStackTrace();
+            
+            Class<Imagens_Internas> clazzHome = Imagens_Internas.class;
+            JOPM JOptionPaneMod = new JOPM( 1, "Povoar Tabela\n"
+                    + "\nTabela não povoada: " 
+                    + "\n"  
+                    + "-"
+                    ,"Banco de Dados", 
+                    new ImageIcon( clazzHome.getResource("logocangaco2.png")) );
+        }    
+////////////////////////////////////////////////////////////////////////////////            
+            
+        } catch( Exception e ){ e.printStackTrace(); } } }.start(); 
+    }//GEN-LAST:event_btPovoarTabela2ActionPerformed
+
     private String criar_Tabelas_do_Banco_De_Dados_Derby(){     
         Connection con = null;     
         Statement s;
  
         String retorno = "";
         
-        String nomeDoBanco = taStatus.getText().trim();
+        String nomeDoBanco = taNomeBanco.getText().trim();
         String url = "jdbc:derby:";
         String driver = "org.apache.derby.jdbc.EmbeddedDriver"; 
         
@@ -4093,7 +4414,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
             
             String strStatus = "Conexão Estabelecida";
             ta_status_criacao.setText( strStatus );
-            jp_Status_Criacao.setVisible(true);  
+            //jp_Status_Criacao.setVisible(true);  
             
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -4696,7 +5017,6 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JPanel CATEGORIA;
     private javax.swing.JPanel CONTROLE_DE_ACESSO;
     private javax.swing.JPanel Criar_Banco;
-    private javax.swing.JPanel Criar_Schema;
     private javax.swing.JPanel ESTABELECIMENTO;
     private javax.swing.JPanel ESTABELECIMENTO_IMAGENS;
     private javax.swing.JPanel EVENTOS;
@@ -4725,7 +5045,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JPanel JPOpcao_37;
     private javax.swing.JPanel JPOpcao_38;
     private javax.swing.JPanel JPOpcao_39;
-    private javax.swing.JPanel JPOpcao_5;
+    private javax.swing.JPanel JPOpcao_41;
     private javax.swing.JPanel JPOpcao_58;
     private javax.swing.JPanel JPOpcao_59;
     private javax.swing.JPanel JPOpcao_6;
@@ -4744,19 +5064,25 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JPanel PRODUTOS_MODELO_FISICO;
     private javax.swing.JPanel PRODUTOS_MODELO_FISICO1;
     private javax.swing.JPanel PRODUTOS_POR_EAN;
-    private javax.swing.JPanel Requerer_Autenticacao;
     private javax.swing.JPanel SUBCATEGORIA;
     private javax.swing.JPanel Teste;
     private javax.swing.JPanel USUARIO_IMAGENS;
+    private javax.swing.JPanel USUARIO_IMAGENS1;
     private javax.swing.JPanel USUARIO_SISTEMA;
     private javax.swing.JPanel USUARIO_TURBO;
     private javax.swing.JPanel USUARIO_TURBO_MENSAGENS;
     private javax.swing.JButton btCriar;
     private javax.swing.JButton btCriar1;
+    private javax.swing.JButton btCriarTabela0001;
+    private javax.swing.JButton btExcluirBanco;
+    private javax.swing.JButton btExcluirTabela;
+    private javax.swing.JButton btPovoarTabela2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -4766,18 +5092,17 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
@@ -4792,6 +5117,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
@@ -4814,18 +5140,18 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JTabbedPane jTabbedPane17;
     private javax.swing.JTabbedPane jTabbedPane18;
     private javax.swing.JTabbedPane jTabbedPane19;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane20;
     private javax.swing.JTabbedPane jTabbedPane21;
     private javax.swing.JTabbedPane jTabbedPane22;
     private javax.swing.JTabbedPane jTabbedPane23;
     private javax.swing.JTabbedPane jTabbedPane24;
     private javax.swing.JTabbedPane jTabbedPane25;
-    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane26;
     private javax.swing.JTabbedPane jTabbedPane33;
     private javax.swing.JTabbedPane jTabbedPane34;
     private javax.swing.JTabbedPane jTabbedPane35;
     private javax.swing.JTabbedPane jTabbedPane36;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTextArea jTextArea16;
@@ -4833,13 +5159,14 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JTextArea jTextArea19;
     private javax.swing.JPanel jpCriar_Banco;
     private javax.swing.JPanel jpStatus;
-    private javax.swing.JPanel jp_Status_Criacao;
+    private javax.swing.JLabel lb_tabela_TESTE;
+    private javax.swing.JTextArea taNomeBanco;
     private javax.swing.JTextArea taSenha;
-    private javax.swing.JTextArea taStatus;
     private javax.swing.JTextArea taUsuario;
     private javax.swing.JTextArea ta_AREA;
     private javax.swing.JTextArea ta_CATEGORIA;
     private javax.swing.JTextArea ta_CONTROLE_DE_ACESSO;
+    private javax.swing.JTextArea ta_Criar_Tabela_Teste;
     private javax.swing.JTextArea ta_ESTABELECIMENTO;
     private javax.swing.JTextArea ta_EVENTOS;
     private javax.swing.JTextArea ta_Estabelecimento_Imagens;
@@ -4851,6 +5178,7 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JTextArea ta_Povoar_ESTABELECIMENTO;
     private javax.swing.JTextArea ta_Povoar_FAMILIA;
     private javax.swing.JTextArea ta_Povoar_SUBCATEGORIA;
+    private javax.swing.JTextArea ta_Povoar_Tabela_Teste;
     private javax.swing.JTextArea ta_Povoar_Usuario_Do_Sistema;
     private javax.swing.JTextArea ta_Povoar_Usuario_Turbo;
     private javax.swing.JTextArea ta_Produtos;
@@ -4859,135 +5187,36 @@ public class Criar_Banco_De_Dados_00_Generico_Derby_Alone extends javax.swing.JP
     private javax.swing.JTextArea ta_Produtos_Por_Ean;
     private javax.swing.JTextArea ta_Produtos_Por_Ean_Imagens;
     private javax.swing.JTextArea ta_SUBCATEGORIA;
-    private javax.swing.JTextArea ta_Teste;
     private javax.swing.JTextArea ta_Usuario_Do_Sistema;
     private javax.swing.JTextArea ta_Usuario_Imagens;
     private javax.swing.JTextArea ta_Usuario_Turbo;
     private javax.swing.JTextArea ta_Usuario_Turbo_Mensagens;
-    private javax.swing.JTextArea ta_requerer_autenticacao;
-    private javax.swing.JTextArea ta_schema;
     private javax.swing.JTextArea ta_status_criacao;
+    private javax.swing.JTextArea ta_status_criacao1;
     // End of variables declaration//GEN-END:variables
     
-    private String criar_Banco_De_Dados_Derby(){     
-        Connection con = null;     
-        Statement s;
- 
-        String retorno;
-        
-        String nomeDoBanco = taStatus.getText().trim();
-        String url = "jdbc:derby:";
-        String driver = "org.apache.derby.jdbc.EmbeddedDriver"; 
-        
-        Properties prop = new Properties();
-                   prop.put( "create", "true" );       // Cria o Banco de Dados
-                   prop.put( "user", taUsuario.getText().trim() );
-                   prop.put( "password", taSenha.getText().trim() );  
-                   
-                   /**prop.put( "bootPassword", "a@Simple_More_Than_16_Char_Password" );/**/
-               
-        try{
-            
-            Class.forName( driver ); 
-            con = DriverManager.getConnection( url + nomeDoBanco, prop );
-            
-            retorno = "Banco de Dados Criado";
-            
-            String strStatus = ta_status_criacao.getText().trim();
-            ta_status_criacao.setText(strStatus+"\n"+"Banco de Dados - Criado");
-            jp_Status_Criacao.setVisible(true);
-            
+    private String criar_Banco_De_Dados_Mysql(){ 
+        String retorno = "Banco de Dados Criado com sucesso!";
+                        
 ////////////////////////////////////////////////////////////////////////////////  
-            try{
-                Statement requerer_autenticacao = con.createStatement(); 
-                requerer_autenticacao.execute(ta_requerer_autenticacao.getText().trim() ); 
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Requerer Autenticacao - OK");
-            }catch( Exception e ){
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Requerer Autenticacao - Não OK");
-            }
-////////////////////////////////////////////////////////////////////////////////    
+        home_setar_Banco_de_Dados_properties();
+////////////////////////////////////////////////////////////////////////////////   
 
-////////////////////////////////////////////////////////////////////////////////  
-            try{
-                Statement criarSchema = con.createStatement(); 
-                criarSchema.execute(ta_schema.getText().trim() ); 
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Schema - Criado OK");
-            }catch( Exception e ){
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Schema - Não Criado");
-            }
-//////////////////////////////////////////////////////////////////////////////// 
-
-////////////////////////////////////////////////////////////////////////////////  
-            try{
-                Statement criarTabelaTeste = con.createStatement(); 
-                criarTabelaTeste.execute(ta_Teste.getText().trim() ); 
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Tabela Teste - Criada OK");
-            }catch( Exception e ){
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Tabela Teste - Não Criada");
-            }
-//////////////////////////////////////////////////////////////////////////////// 
-
-////////////////////////////////////////////////////////////////////////////////  
-            try{
-                PreparedStatement pstm;
-                String cadastrar = "INSERT INTO JM.TESTE " + "( TESTE1, TESTE2, TESTE3, TESTE4 ) " + "VALUES ( ?, ?, ?, ? )";
-                pstm = con.prepareStatement( cadastrar );
-                pstm.setString( 1, "TESTE1" ); //System.out.println( "cadastrando TESTE1" );  
-                pstm.setString( 2, "TESTE2" ); //System.out.println( "cadastrando TESTE2" );  
-                pstm.setString( 3, "TESTE3" ); //System.out.println( "cadastrando TESTE3" );  
-                pstm.setString( 4, "TESTE4" ); //System.out.println( "cadastrando TESTE4" );  
-                pstm.executeUpdate();
-                
-                Statement povoarTabelaTeste  = con.createStatement(); 
-                povoarTabelaTeste.execute( "INSERT INTO JM.TESTE (TESTE1, TESTE2, TESTE3, TESTE4) VALUES ( 'TESTE12', 'TESTE22', 'TESTE32', 'TESTE42' )" );
-                
-                strStatus = ta_status_criacao.getText().trim();                
-                ta_status_criacao.setText(strStatus+"\n"+"Tabela Teste Povoada - OK");
-            }catch( Exception e ){
-                strStatus = ta_status_criacao.getText().trim();
-                ta_status_criacao.setText(strStatus+"\n"+"Tabela Teste Povoada - Não OK");
-            }
-////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////         
+        try{                
+            DB DB2 = new DB();            
+            Connection con = null; try{ con = DB2.derby();           }catch(Exception e){}    
+            Statement s    = null; try{ s   = con.createStatement(); }catch(Exception e){} 
+            
+            String nomeBanco = null; try{ nomeBanco = taNomeBanco.getText().trim(); }catch ( Exception e ){}
+            int Result = s.executeUpdate("CREATE DATABASE IF NOT EXISTS " + nomeBanco);
             
         }catch( Exception e ){
-            
-            retorno = "Banco de Dados Não Criado";      
-            String strStatus = ta_status_criacao.getText().trim();
-            ta_status_criacao.setText(strStatus+"\n"+"Banco de Dados - Não Criado");
-            //JOptionPane.showMessageDialog( null, "Erro1! \n" + e.getMessage().toString() );    
-        } 
+            retorno = "Banco de Dados Não Criado - Não OK"; 
+        }
+//////////////////////////////////////////////////////////////////////////////// 
 
-        try{                     
-            
-            ResultSet rs;
-            s  = con.createStatement();
-            rs = s.executeQuery("SELECT * FROM JM.TESTE");
-            while (rs.next()){
-                System.out.println( rs.getInt(1) + " - " + rs.getString(2) );
-                break;                
-            }
-            
-            retorno = "Consulta a Tabela Teste OK";
-            
-            String strStatus = ta_status_criacao.getText().trim();
-            ta_status_criacao.setText(strStatus+"\n"+"Consulta a Tabela Teste - OK");
-        }catch ( Exception e ){
-            
-            retorno = "Consulta a Tabela Teste - Não OK";    
-            
-            String strStatus = ta_status_criacao.getText().trim();
-            ta_status_criacao.setText(strStatus+"\n"+"Consulta a Tabela Teste - Não OK");
-            //JOptionPane.showMessageDialog( null, "Erro2! \n" + e.getMessage().toString() );    
-        } 
-        
         return retorno;
-    }    
-    
+
+    }
 }
